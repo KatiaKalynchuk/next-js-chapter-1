@@ -4,6 +4,13 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+          to bottom,
+          transparent,
+          rgb(var(--background-end-rgb))
+  )
+  rgb(var(--background-start-rgb));
 }
 
 @layer base {
@@ -68,5 +75,17 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+:root {
+  --foreground-rgb: 229, 229, 229;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
+}
+
+@layer utilities {
+  .text-shadow {
+    text-shadow: 0 0 5px rgba(255, 232, 31, 0.7);
   }
 }
