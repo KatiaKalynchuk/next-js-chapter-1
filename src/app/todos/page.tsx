@@ -2,8 +2,11 @@ import Link from 'next/link'
 import Footer from '@/components/todo/Footer';
 import { TodoList } from '@/components/todo/TodoList';
 import TodoActions from '@/components/todo/TodoActions';
+import { SearchParams } from '@/types';
 
-export default function Todos({ searchParams }: { searchParams: any }) {
+export default async function Todos(props: { searchParams: Promise<SearchParams> }) {
+  const searchParams = await props.searchParams;
+
   return (
     <div className="flex flex-col min-h-screen bg-repeat pb-2">
       <main className="flex-grow container mx-auto px-4 py-8">
@@ -26,7 +29,7 @@ export default function Todos({ searchParams }: { searchParams: any }) {
         </div>
         <div className="mt-8 text-center">
           <Link
-            href="/create"
+            href="/todos/create"
             className="bg-yellow-400 hover:bg-yellow-300 text-gray-900 font-bold py-2 px-4 rounded-full transition-colors duration-300"
           >
             Add new

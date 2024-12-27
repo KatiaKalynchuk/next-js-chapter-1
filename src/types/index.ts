@@ -19,3 +19,10 @@ export type Todo = {
   priority: string;
   completed: boolean;
 };
+
+export type SearchParams = {
+  dueDate: string;
+  completed: string;
+  priority: Priority;
+  sortBy: SortBy;
+};

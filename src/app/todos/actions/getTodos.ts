@@ -2,12 +2,12 @@
 
 import { createClient } from "@/utils/supabase/server";
 import { cookies } from "next/headers";
-import { Priority, SortBy, Todo } from "@/types";
+import { Priority, SearchParams, SortBy, Todo } from '@/types';
 
-export async function getTodos(searchParams: any): Promise<{ data: Todo[] }> {
-  const cookieStore = cookies();
+export async function getTodos(searchParams: SearchParams): Promise<{ data: Todo[] }> {
+  const cookieStore = await cookies();
   const supabase = createClient(cookieStore);
-  const { sortBy, priorityValue, completed, due_date } = await searchParams;
+  const { sortBy, priority: priorityValue, completed, dueDate: dueDateValue } = await searchParams;
 
   let query = supabase
     .from("todo")
@@ -24,7 +24,7 @@ export async function getTodos(searchParams: any): Promise<{ data: Todo[] }> {
     query = query.eq("completed", completed === "Completed");
   }
 
-  const dueDate = getDueDate(due_date);
+  const dueDate = getDueDate(dueDateValue);
   if (dueDate) {
     const formattedDate = formatDate(dueDate);
     query = query.eq("due_date", formattedDate);
@@ -46,7 +46,7 @@ const getPriority = (priority: Priority): Priority => {
   return Object.values(Priority).includes(priority) ? priority : Priority.ANY;
 };
 
-const getDueDate = (dueDate: Date): Date | null => {
+const getDueDate = (dueDate: string): Date | null => {
   return typeof dueDate === "string" && /^\d{4}-\d{2}-\d{2}$/.test(dueDate)
     ? new Date(dueDate)
     : null;

@@ -17,10 +17,10 @@ import {
 } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
-import { Priority, SortBy } from "@/types";
+import { Priority, SortBy, SearchParams } from "@/types";
 import { useRouter } from 'next/navigation'
 
-export function TodoActions({ searchParams }: any) {
+export function TodoActions({ searchParams }: { searchParams: SearchParams }) {
   const router = useRouter();
 
 
@@ -37,14 +37,14 @@ export function TodoActions({ searchParams }: any) {
         <form>
           <CardContent className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             <div>
-              <Label htmlFor="due_date" className="block text-lg font-medium text-gray-300">
+              <Label htmlFor="dueDate" className="block text-lg font-medium text-gray-300">
                 Due date
               </Label>
               <Input
-                id="due_date"
-                name="due_date"
+                id="dueDate"
+                name="dueDate"
                 type="date"
-                // defaultValue={searchParams.due_date}
+                defaultValue={searchParams.dueDate}
                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-yellow-300 focus:border-yellow-300"
               />
             </div>
@@ -53,7 +53,7 @@ export function TodoActions({ searchParams }: any) {
                 Priority
               </Label>
               <Select
-                // defaultValue={searchParams.priority ?? Priority.MEDIUM}
+                defaultValue={searchParams.priority ?? Priority.ANY}
                 name="priority"
               >
                 <SelectTrigger
@@ -73,7 +73,7 @@ export function TodoActions({ searchParams }: any) {
                 Completion status
               </Label>
               <Select
-                // defaultValue={searchParams.completed ?? "All"}
+                defaultValue={searchParams.completed ?? "All"}
                 name="completed"
               >
                 <SelectTrigger className="p-2 border border-gray-300 rounded-md shadow-sm focus:ring-yellow-300 focus:border-yellow-300">
@@ -91,7 +91,7 @@ export function TodoActions({ searchParams }: any) {
                 Sort by
               </Label>
               <Select
-                // defaultValue={searchParams.sortBy?.toString() ?? SortBy.TITLE.toString()}
+                defaultValue={searchParams.sortBy?.toString() ?? SortBy.TITLE.toString()}
                 name="sortBy"
               >
                 <SelectTrigger className="p-2 border border-gray-300 rounded-md shadow-sm focus:ring-yellow-300 focus:border-yellow-300">

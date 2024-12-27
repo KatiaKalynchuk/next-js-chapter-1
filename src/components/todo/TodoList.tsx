@@ -2,32 +2,10 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/
 import { Button } from '@/components/ui/button';
 import TodoForm from '@/components/todo/TodoForm';
 import { getTodos } from '@/app/todos/actions/getTodos';
+import { SearchParams } from '@/types';
+import { formatDate } from '@/utils';
 
-// const todos = [
-//   {
-//     id: 1,
-//     priority: 'High',
-//     due_date: '2018-07-22',
-//     title: 'Test',
-//     completed: true,
-//   },
-//   {
-//     id: 2,
-//     priority: 'Medium',
-//     due_date: '2018-07-22',
-//     title: 'Test',
-//     completed: true,
-//   },
-//   {
-//     id: 3,
-//     priority: 'Low',
-//     due_date: '2018-07-22',
-//     title: 'Test',
-//     completed: false,
-//   },
-// ]
-
-export async function TodoList({ searchParams }: { searchParams: any }) {
+export async function TodoList({ searchParams }: { searchParams: SearchParams }) {
   const { data: todos } = await getTodos(searchParams);
 
   return (
@@ -53,7 +31,7 @@ export async function TodoList({ searchParams }: { searchParams: any }) {
                 </span>
                 <span className="ml-52 flex-1 text-sm font-light">
                   <p>Priority: {todo.priority}</p>
-                  <p>Due: {todo.due_date}</p>
+                  <p>Due: {formatDate(todo.due_date)}</p>
                 </span>
               </AccordionTrigger>
               <AccordionContent className="p-4 bg-gray-100">

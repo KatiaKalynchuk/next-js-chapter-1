@@ -1,4 +1,5 @@
 "use client";
+
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -11,17 +12,21 @@ import {
 } from '@/components/ui/select';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Priority } from '@/types';
+import { Priority, Todo } from '@/types';
+import { addTodo } from '@/app/todos/actions/addTodo';
+import { formatDate } from '@/utils';
 
-type Props = {
+type TodoFormProps = {
   isUpdateTodo?: boolean;
-  // todo?: Todo;
+  todo?: Todo;
 };
 
-export const TodoForm: React.FC<Props> = ({ todo, isUpdateTodo = false }) => {
+const updateTodo = () => {};
+
+export const TodoForm: React.FC<TodoFormProps> = ({ todo, isUpdateTodo = false }) => {
   return (
     <form
-      // action={isUpdateTodo ? updateTodo : addTodo}
+      action={isUpdateTodo ? updateTodo : addTodo}
       className="max-w-2xl mx-auto p-8"
     >
       <input type="hidden" name="id" value={todo?.id} />
@@ -54,14 +59,14 @@ export const TodoForm: React.FC<Props> = ({ todo, isUpdateTodo = false }) => {
 
       <div className="flex flex-row gap-4 mb-6">
         <div className="flex-1">
-          <Label htmlFor="due_date" className="block text-lg font-medium text-gray-900">
+          <Label htmlFor="dueDate" className="block text-lg font-medium text-gray-900">
             Due Date
           </Label>
           <Input
-            id="due_date"
-            name="due_date"
+            id="dueDate"
+            name="dueDate"
             type="date"
-            defaultValue={todo?.due_date}
+            defaultValue={formatDate(todo?.due_date)}
             required
             className="mt-1 block w-full p-2 border border-gray-300 text-gray-600 rounded-md shadow-sm focus:ring-gray-900 focus:border-gray-900"
           />
