@@ -1,10 +1,12 @@
-import Link from 'next/link'
+import Link from 'next/link';
 import Footer from '@/components/todo/Footer';
 import { TodoList } from '@/components/todo/TodoList';
 import TodoActions from '@/components/todo/TodoActions';
 import { SearchParams } from '@/types';
 
-export default async function Todos(props: { searchParams: Promise<SearchParams> }) {
+export default async function Todos(props: {
+  searchParams: Promise<SearchParams>;
+}) {
   const searchParams = await props.searchParams;
 
   return (
@@ -36,7 +38,7 @@ export default async function Todos(props: { searchParams: Promise<SearchParams>
           </Link>
         </div>
       </main>
-      <Footer/>
+      <Footer />
     </div>
-  )
+  );
 }

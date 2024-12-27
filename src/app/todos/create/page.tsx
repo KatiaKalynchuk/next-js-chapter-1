@@ -3,7 +3,7 @@ import TodoForm from '@/components/todo/TodoForm';
 
 export default function AddTodo() {
   return (
-    <Card  className="bg-gray-100">
+    <Card className="bg-gray-100">
       <CardHeader>
         <CardTitle className="text-3xl md:text-5xl font-bold text-yellow-400 text-center mb-8 tracking-wider">
           Add new task

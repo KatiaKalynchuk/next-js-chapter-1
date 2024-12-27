@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
@@ -23,7 +23,10 @@ type TodoFormProps = {
 
 const updateTodo = () => {};
 
-export const TodoForm: React.FC<TodoFormProps> = ({ todo, isUpdateTodo = false }) => {
+export const TodoForm: React.FC<TodoFormProps> = ({
+  todo,
+  isUpdateTodo = false,
+}) => {
   return (
     <form
       action={isUpdateTodo ? updateTodo : addTodo}
@@ -32,7 +35,10 @@ export const TodoForm: React.FC<TodoFormProps> = ({ todo, isUpdateTodo = false }
       <input type="hidden" name="id" value={todo?.id} />
 
       <div className="mb-6">
-        <Label htmlFor="title" className="block text-lg font-medium text-gray-900">
+        <Label
+          htmlFor="title"
+          className="block text-lg font-medium text-gray-900"
+        >
           Title
         </Label>
         <Input
@@ -45,7 +51,10 @@ export const TodoForm: React.FC<TodoFormProps> = ({ todo, isUpdateTodo = false }
       </div>
 
       <div className="mb-6">
-        <Label htmlFor="description" className="block text-lg font-medium text-gray-900">
+        <Label
+          htmlFor="description"
+          className="block text-lg font-medium text-gray-900"
+        >
           Description
         </Label>
         <Textarea
@@ -59,7 +68,10 @@ export const TodoForm: React.FC<TodoFormProps> = ({ todo, isUpdateTodo = false }
 
       <div className="flex flex-row gap-4 mb-6">
         <div className="flex-1">
-          <Label htmlFor="dueDate" className="block text-lg font-medium text-gray-900">
+          <Label
+            htmlFor="dueDate"
+            className="block text-lg font-medium text-gray-900"
+          >
             Due Date
           </Label>
           <Input
@@ -73,7 +85,10 @@ export const TodoForm: React.FC<TodoFormProps> = ({ todo, isUpdateTodo = false }
         </div>
 
         <div className="flex-1">
-          <Label htmlFor="priority" className="block text-lg font-medium text-gray-900">
+          <Label
+            htmlFor="priority"
+            className="block text-lg font-medium text-gray-900"
+          >
             Priority
           </Label>
           <Select
@@ -81,9 +96,8 @@ export const TodoForm: React.FC<TodoFormProps> = ({ todo, isUpdateTodo = false }
             name="priority"
             required
           >
-            <SelectTrigger
-              className="mt-1 w-full p-2 border border-gray-300 text-gray-600 rounded-md shadow-sm focus:ring-gray-900 focus:border-gray-900">
-              <SelectValue/>
+            <SelectTrigger className="mt-1 w-full p-2 border border-gray-300 text-gray-600 rounded-md shadow-sm focus:ring-gray-900 focus:border-gray-900">
+              <SelectValue />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value={Priority.HIGH}>{Priority.HIGH}</SelectItem>
@@ -101,7 +115,10 @@ export const TodoForm: React.FC<TodoFormProps> = ({ todo, isUpdateTodo = false }
           defaultChecked={todo?.completed || false}
           className="mr-2"
         />
-        <Label htmlFor="completed" className="text-lg font-medium text-gray-900">
+        <Label
+          htmlFor="completed"
+          className="text-lg font-medium text-gray-900"
+        >
           Is Completed
         </Label>
       </div>

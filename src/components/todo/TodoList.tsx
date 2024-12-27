@@ -1,11 +1,20 @@
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion';
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from '@/components/ui/accordion';
 import { Button } from '@/components/ui/button';
 import TodoForm from '@/components/todo/TodoForm';
 import { getTodos } from '@/app/todos/actions/getTodos';
 import { SearchParams } from '@/types';
 import { formatDate } from '@/utils';
 
-export async function TodoList({ searchParams }: { searchParams: SearchParams }) {
+export async function TodoList({
+  searchParams,
+}: {
+  searchParams: SearchParams;
+}) {
   const { data: todos } = await getTodos(searchParams);
 
   return (
@@ -19,16 +28,13 @@ export async function TodoList({ searchParams }: { searchParams: SearchParams })
               key={todo.id}
               className="border rounded-lg shadow-sm overflow-hidden"
             >
-              <AccordionTrigger
-                className="flex justify-between items-center p-4 text-lg font-semibold  hover:bg-gray-700 transition-colors duration-300">
+              <AccordionTrigger className="flex justify-between items-center p-4 text-lg font-semibold  hover:bg-gray-700 transition-colors duration-300">
                 <span
-                  className={`mr-4 text-sm font-light ${todo.completed ? "text-green-500" : "text-yellow-500"}`}
+                  className={`mr-4 text-sm font-light ${todo.completed ? 'text-green-500' : 'text-yellow-500'}`}
                 >
-                  {todo.completed ? "Completed" : "In Progress"}
+                  {todo.completed ? 'Completed' : 'In Progress'}
                 </span>
-                <span className="flex-1 hover:underline">
-                  {todo.title}
-                </span>
+                <span className="flex-1 hover:underline">{todo.title}</span>
                 <span className="ml-52 flex-1 text-sm font-light">
                   <p>Priority: {todo.priority}</p>
                   <p>Due: {formatDate(todo.due_date)}</p>
@@ -53,5 +59,5 @@ export async function TodoList({ searchParams }: { searchParams: SearchParams })
         </Accordion>
       </div>
     </section>
-  )
+  );
 }

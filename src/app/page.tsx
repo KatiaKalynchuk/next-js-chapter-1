@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import Link from 'next/link';
 import Footer from '@/components/todo/Footer';
 
 export default function Home() {
@@ -17,5 +17,5 @@ export default function Home() {
       </main>
       <Footer />
     </div>
-  )
+  );
 }

@@ -5,5 +5,5 @@ export default function Footer() {
         <p>May the Force be with you</p>
       </div>
     </footer>
-  )
+  );
 }

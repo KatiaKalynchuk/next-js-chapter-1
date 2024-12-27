@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import {
   Card,
@@ -6,26 +6,25 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+} from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import { Priority, SortBy, SearchParams } from "@/types";
-import { useRouter } from 'next/navigation'
+} from '@/components/ui/select';
+import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
+import { Priority, SortBy, SearchParams } from '@/types';
+import { useRouter } from 'next/navigation';
 
 export function TodoActions({ searchParams }: { searchParams: SearchParams }) {
   const router = useRouter();
 
-
   const handleReset = () => {
-    router.push("/todos");
+    router.push('/todos');
   };
 
   return (
@@ -37,7 +36,10 @@ export function TodoActions({ searchParams }: { searchParams: SearchParams }) {
         <form>
           <CardContent className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             <div>
-              <Label htmlFor="dueDate" className="block text-lg font-medium text-gray-300">
+              <Label
+                htmlFor="dueDate"
+                className="block text-lg font-medium text-gray-300"
+              >
                 Due date
               </Label>
               <Input
@@ -49,31 +51,38 @@ export function TodoActions({ searchParams }: { searchParams: SearchParams }) {
               />
             </div>
             <div>
-              <Label htmlFor="priority" className="block text-lg font-medium text-gray-300">
+              <Label
+                htmlFor="priority"
+                className="block text-lg font-medium text-gray-300"
+              >
                 Priority
               </Label>
               <Select
                 defaultValue={searchParams.priority ?? Priority.ANY}
                 name="priority"
               >
-                <SelectTrigger
-                  className="p-2 border border-gray-300 rounded-md shadow-sm focus:ring-yellow-300 focus:border-yellow-300">
+                <SelectTrigger className="p-2 border border-gray-300 rounded-md shadow-sm focus:ring-yellow-300 focus:border-yellow-300">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value={Priority.ANY}>Not Selected</SelectItem>
                   <SelectItem value={Priority.HIGH}>{Priority.HIGH}</SelectItem>
-                  <SelectItem value={Priority.MEDIUM}>{Priority.MEDIUM}</SelectItem>
+                  <SelectItem value={Priority.MEDIUM}>
+                    {Priority.MEDIUM}
+                  </SelectItem>
                   <SelectItem value={Priority.LOW}>{Priority.LOW}</SelectItem>
                 </SelectContent>
               </Select>
             </div>
             <div>
-              <Label htmlFor="completed" className="block text-lg font-medium text-gray-300">
+              <Label
+                htmlFor="completed"
+                className="block text-lg font-medium text-gray-300"
+              >
                 Completion status
               </Label>
               <Select
-                defaultValue={searchParams.completed ?? "All"}
+                defaultValue={searchParams.completed ?? 'All'}
                 name="completed"
               >
                 <SelectTrigger className="p-2 border border-gray-300 rounded-md shadow-sm focus:ring-yellow-300 focus:border-yellow-300">
@@ -87,11 +96,16 @@ export function TodoActions({ searchParams }: { searchParams: SearchParams }) {
               </Select>
             </div>
             <div>
-              <Label htmlFor="sortBy" className="block text-lg font-medium text-gray-300">
+              <Label
+                htmlFor="sortBy"
+                className="block text-lg font-medium text-gray-300"
+              >
                 Sort by
               </Label>
               <Select
-                defaultValue={searchParams.sortBy?.toString() ?? SortBy.TITLE.toString()}
+                defaultValue={
+                  searchParams.sortBy?.toString() ?? SortBy.TITLE.toString()
+                }
                 name="sortBy"
               >
                 <SelectTrigger className="p-2 border border-gray-300 rounded-md shadow-sm focus:ring-yellow-300 focus:border-yellow-300">
