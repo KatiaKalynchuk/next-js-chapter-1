@@ -1,14 +1,19 @@
 'use server';
 
+import { Priority } from '@/types';
 import { createClient } from '@/utils/supabase/server';
+import { revalidatePath } from 'next/cache';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
-import { revalidatePath } from 'next/cache';
-import { Priority } from '@/types';
 
-export async function addTodo(formData: FormData) {
+export async function updateTodo(formData: FormData) {
   const cookieStore = await cookies();
   const supabase = createClient(cookieStore);
+
+  const id = formData.get('id')?.toString();
+  if (!id) {
+    throw new Error('Todo ID is missing');
+  }
 
   const todoData = {
     title: formData.get('title')?.toString() || '',
@@ -18,13 +23,17 @@ export async function addTodo(formData: FormData) {
     completed: Boolean(formData.get('completed')),
   };
 
-  const { error } = await supabase.from('todo').insert([todoData]);
+  const { data, error } = await supabase
+    .from('todo')
+    .update(todoData)
+    .eq('id', id);
 
   if (error) {
-    throw new Error(`Failed to add a new task: ${error.message}`);
+    throw new Error(`Failed to update task: ${error.message}`);
   }
 
-  revalidatePath('/todos');
+  console.log('Updated task:', data);
 
+  revalidatePath('/todos');
   redirect('/todos');
 }

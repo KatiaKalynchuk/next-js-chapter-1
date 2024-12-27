@@ -14,14 +14,13 @@ import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Priority, Todo } from '@/types';
 import { addTodo } from '@/app/todos/actions/addTodo';
+import { updateTodo } from '@/app/todos/actions/updateTodo';
 import { formatDate } from '@/utils';
 
 type TodoFormProps = {
   isUpdateTodo?: boolean;
   todo?: Todo;
 };
-
-const updateTodo = () => {};
 
 export const TodoForm: React.FC<TodoFormProps> = ({
   todo,
