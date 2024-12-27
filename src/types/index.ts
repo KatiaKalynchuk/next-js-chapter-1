@@ -10,3 +10,12 @@ export enum SortBy {
   DUE_DATE = "due_date",
   TITLE = "title",
 }
+
+export type Todo = {
+  id: string;
+  title: string;
+  due_date: string;
+  description: string;
+  priority: string;
+  completed: boolean;
+};

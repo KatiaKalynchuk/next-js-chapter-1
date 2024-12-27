@@ -1,4 +1,5 @@
 "use client";
+
 import {
   Card,
   CardContent,
@@ -44,7 +45,7 @@ export function TodoActions({ searchParams }: any) {
                 name="due_date"
                 type="date"
                 // defaultValue={searchParams.due_date}
-                className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-yellow-300 focus:border-yellow-300"
               />
             </div>
             <div>
@@ -55,7 +56,8 @@ export function TodoActions({ searchParams }: any) {
                 // defaultValue={searchParams.priority ?? Priority.MEDIUM}
                 name="priority"
               >
-                <SelectTrigger className="p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                <SelectTrigger
+                  className="p-2 border border-gray-300 rounded-md shadow-sm focus:ring-yellow-300 focus:border-yellow-300">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -74,7 +76,7 @@ export function TodoActions({ searchParams }: any) {
                 // defaultValue={searchParams.completed ?? "All"}
                 name="completed"
               >
-                <SelectTrigger className="p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                <SelectTrigger className="p-2 border border-gray-300 rounded-md shadow-sm focus:ring-yellow-300 focus:border-yellow-300">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -92,7 +94,7 @@ export function TodoActions({ searchParams }: any) {
                 // defaultValue={searchParams.sortBy?.toString() ?? SortBy.TITLE.toString()}
                 name="sortBy"
               >
-                <SelectTrigger className="p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                <SelectTrigger className="p-2 border border-gray-300 rounded-md shadow-sm focus:ring-yellow-300 focus:border-yellow-300">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>

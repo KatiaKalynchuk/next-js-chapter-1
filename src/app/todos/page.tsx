@@ -3,7 +3,7 @@ import Footer from '@/components/todo/Footer';
 import { TodoList } from '@/components/todo/TodoList';
 import TodoActions from '@/components/todo/TodoActions';
 
-export default function Todos() {
+export default function Todos({ searchParams }: { searchParams: any }) {
   return (
     <div className="flex flex-col min-h-screen bg-repeat pb-2">
       <main className="flex-grow container mx-auto px-4 py-8">
@@ -19,9 +19,9 @@ export default function Todos() {
           List of sinister plans
         </h1>
         <div className="bg-gray-900 bg-opacity-70 p-6 rounded-lg shadow-lg">
-          <TodoActions />
+          <TodoActions searchParams={searchParams} />
           <div className="mt-4 border-t border-gray-300 pt-4">
-            <TodoList />
+            <TodoList searchParams={searchParams} />
           </div>
         </div>
         <div className="mt-8 text-center">

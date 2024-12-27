@@ -1,32 +1,35 @@
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion';
 import { Button } from '@/components/ui/button';
 import TodoForm from '@/components/todo/TodoForm';
+import { getTodos } from '@/app/todos/actions/getTodos';
 
-const todos = [
-  {
-    id: 1,
-    priority: 'High',
-    due_date: '20-12-2024',
-    title: 'Test',
-    completed: true,
-  },
-  {
-    id: 2,
-    priority: 'Medium',
-    due_date: '20-12-2024',
-    title: 'Test',
-    completed: true,
-  },
-  {
-    id: 3,
-    priority: 'Low',
-    due_date: '20-12-2024',
-    title: 'Test',
-    completed: false,
-  },
-]
+// const todos = [
+//   {
+//     id: 1,
+//     priority: 'High',
+//     due_date: '2018-07-22',
+//     title: 'Test',
+//     completed: true,
+//   },
+//   {
+//     id: 2,
+//     priority: 'Medium',
+//     due_date: '2018-07-22',
+//     title: 'Test',
+//     completed: true,
+//   },
+//   {
+//     id: 3,
+//     priority: 'Low',
+//     due_date: '2018-07-22',
+//     title: 'Test',
+//     completed: false,
+//   },
+// ]
 
-export async function TodoList() {
+export async function TodoList({ searchParams }: { searchParams: any }) {
+  const { data: todos } = await getTodos(searchParams);
+
   return (
     <section>
       <div className="overflow-hidden">

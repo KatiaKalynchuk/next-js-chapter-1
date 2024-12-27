@@ -76,6 +76,10 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    color: #facc15;
+    background-color: #facc15;
+  }
 }
 
 :root {
