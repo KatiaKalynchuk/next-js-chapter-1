@@ -9,6 +9,7 @@ import TodoForm from '@/components/todo/TodoForm';
 import { getTodos } from '@/app/todos/actions/getTodos';
 import { SearchParams } from '@/types';
 import { formatDate } from '@/utils';
+import { deleteTodo } from '@/app/todos/actions/deleteTodo';
 
 export async function TodoList({
   searchParams,
@@ -16,6 +17,10 @@ export async function TodoList({
   searchParams: SearchParams;
 }) {
   const { data: todos } = await getTodos(searchParams);
+
+  if (!todos?.length) {
+    return null;
+  }
 
   return (
     <section>
@@ -42,7 +47,7 @@ export async function TodoList({
               </AccordionTrigger>
               <AccordionContent className="p-4 bg-gray-100">
                 <form
-                  // action={deleteTodo}
+                  action={deleteTodo}
                   className="flex items-center justify-between space-x-4"
                 >
                   <input type="hidden" name="id" value={todo.id} />
