@@ -6,7 +6,7 @@ export default function Home() {
     <div className="flex flex-col min-h-screen bg-[url('/stars.png')] bg-repeat pb-2">
       <main className="flex-grow flex flex-col items-center justify-center container mx-auto px-4 py-8">
         <h1 className="text-4xl md:text-6xl font-bold text-yellow-400 text-center mb-8 tracking-wider text-shadow">
-          Darth Vader's super plan
+          Darth Vader&#39;s super plan
         </h1>
         <Link
           href="/todos"
