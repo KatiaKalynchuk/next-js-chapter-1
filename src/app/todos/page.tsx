@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import Link from 'next/link';
 import Footer from '@/components/todo/Footer';
 import { TodoList } from '@/components/todo/TodoList';
@@ -24,9 +25,9 @@ export default async function Todos(props: {
           List of sinister plans
         </h1>
         <div className="bg-gray-900 bg-opacity-70 p-6 rounded-lg shadow-lg">
-          <TodoActions searchParams={searchParams} />
+          {/*<TodoActions searchParams={searchParams} />*/}
           <div className="mt-4 border-t border-gray-300 pt-4">
-            <TodoList searchParams={searchParams} />
+            {/*<TodoList searchParams={searchParams} />*/}
           </div>
         </div>
         <div className="mt-8 text-center">
